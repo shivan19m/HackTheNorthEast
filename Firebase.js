@@ -100,11 +100,12 @@ function addBuilding(newBuilding)
                 {
                     var newBalance = updateCash(-100000);
                     console.log("New City Hall Added");
-                    console.log("The update balance is " newBalance);
+                    console.log("The update balance is ", newBalance);
                 })
                 .catch(function(error){
                     console.error("Error adding a City Hall ", error);
                 }
+                )
             break;
         case "House":
             building.set({
