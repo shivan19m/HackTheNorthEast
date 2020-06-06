@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "login.css">
+    <link rel = "stylesheet" href = "GoogleButton.css">
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="../FirebaseCode.js"></script>
+    <script src="LoginFirebase.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign in/Sign Up</title>
-    <link rel="stylesheet" href="homepage.css">
+
+    <title>Saving By Coding</title>
 </head>
 <body>
+
 <div class="menu-btn">
     <div class="menu-btn__burger"></div>
 </div>
@@ -30,11 +41,46 @@
         <img class="img2" src="Logo.png">
     </div>
     <div class="profile-box">
-        <img class="img1" src="user.png">
+        <a href="signin.html">
+            <img class="img1" src="user.png">
+        </a>
         <span class="txt1"> Shivan Mukherjee <br> $2500 </span>
-
-
     </div>
 </nav>
+
+<br><br>
+
+
+<div class = "container loginContainer" data-aos="fade-up">
+
+    <div class = "row loginFormRow justify-content-around " data-aos="fade-up">
+        <div class = "col loginButtonCol">
+
+            <div class="card loginCard">
+                <div class="card-body cardBody">
+                    <div class="login-form loginFORM">
+                        <h2 class="text-center memberLog">Member Login</h2>
+
+                        <br><br><br>
+                        <div class="form-group">
+                            <button onclick= "GoogleSignIn()" class="loginBtn loginBtn--google">
+                                SignUp/Login with Google
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.9/angular.min.js" integrity="sha256-b5NvmvUcyr0wpBOLnNbaWH5zKQAivhj8yMYhfXEumQA=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+<script>AOS.init();</script>
 </html>
