@@ -3,6 +3,8 @@ require("firebase/auth");
 require("firebase/analytics");
 require("firebase/firestore");
 
+
+
 var firebaseConfig = {
     apiKey: "AIzaSyCktGr6pX6KyzPaOtdfEZk9Cm2ANuNvcbM",
     authDomain: "jay1231.firebaseapp.com",
@@ -29,14 +31,14 @@ function createUser(inGameUserName)
             building: {
                 CityHall: 1, //City only starts with a city hall
                 House: 0,
-                Tower: 0,
+                Store: 0,
                 Hotel: 0,
                 Apartment: 0
             },
-            decor: {
+            entertainment: {
                 park: 0,
                 monument: 0,
-                pool: 0,
+                pool: 0
             }
         }
     })
@@ -111,7 +113,7 @@ function addBuilding(newBuilding)
                 House : building.get("House") + 1
             })
                 .then(function() {
-                    var newBalance = updateCash(-10000);
+                    var newBalance = updateCash(-15000);
                     console.log("New House Added");
                     console.log("The updated balance is ", newBalance);
                 })
@@ -119,17 +121,17 @@ function addBuilding(newBuilding)
                     console.error("Error adding a house ", error);
                 })
             break;
-        case "Tower":
+        case "Store":
             building.set({
-                Tower: building.get("Tower") + 1
+                Store: building.get("Store") + 1
             })
                 .then(function() {
-                    var newBalance = updateCash(-200000)
-                    console.log("New Tower Added");
+                    var newBalance = updateCash(-40000)
+                    console.log("New Store Added");
                     console.log("The updated balance is ", newBalance);
                 })
                 .catch(function(error) {
-                    console.error("Error adding a tower ", error);
+                    console.error("Error adding a store ", error);
                 })
             break;
         case "Hotel":
@@ -161,16 +163,16 @@ function addBuilding(newBuilding)
     }
 }
 
-function addDecor(newDecor)
+function addEntertainmentPlace(newEntertainmentPlace)
 {
     var userId = firebase.auth().currentUser.uid;
     var cityAttr = db.collection("users").doc(userId).cityAttributes
-    var decor = cityAttr.get("decor")
-    switch(newDecor)
+    var entertainment = cityAttr.get("entertainment")
+    switch(newEntertainmentPlace)
     {
         case "park" :
-            decor.set({
-                "park" : decor.get("park") + 1
+            entertainment.set({
+                "park" : entertainment.get("park") + 1
             })
                 .then(function() {
                    var newBalance = updateCash(-35000)
@@ -182,8 +184,8 @@ function addDecor(newDecor)
                 })
             break;
         case "monument" :
-            decor.set({
-                "monument" : decor.get("monument") + 1
+            entertainment.set({
+                "monument" : entertainment.get("monument") + 1
             })
                 .then(function() {
                     var newBalance = updateCash(-45000);
@@ -195,8 +197,8 @@ function addDecor(newDecor)
                 })
             break;
         case "pool" :
-            decor.set({
-                "pool" : decor.get("pool") + 1;
+            entertainment.set({
+                "pool" : entertainment.get("pool") + 1
             })
                 .then(function() {
                     var newBalance = updateCash(-65000);
