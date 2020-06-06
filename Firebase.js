@@ -34,8 +34,8 @@ function createUser(inGameUserName)
                 Apartment: 0
             },
             decor: {
-                tree: 0,
-                shrub: 0,
+                park: 0,
+                monument: 0,
                 pool: 0,
             }
         }
@@ -104,8 +104,7 @@ function addBuilding(newBuilding)
                 })
                 .catch(function(error){
                     console.error("Error adding a City Hall ", error);
-                }
-                )
+                })
             break;
         case "House":
             building.set({
@@ -132,6 +131,7 @@ function addBuilding(newBuilding)
                 .catch(function(error) {
                     console.error("Error adding a tower ", error);
                 })
+            break;
         case "Hotel":
             building.set({
                 Hotel: building.get("Hotel") + 1
@@ -144,6 +144,7 @@ function addBuilding(newBuilding)
                 .catch(function(error) {
                     console.error("Error adding a hotel ", error);
                 })
+            break;
         case "Apartment":
             building.set({
                 Apartment: building.get("Apartment") + 1
@@ -156,6 +157,7 @@ function addBuilding(newBuilding)
                 .catch(function(error) {
                     console.error("Error adding an apartment ", error);
                 })
+            break;
     }
 }
 
@@ -166,7 +168,45 @@ function addDecor(newDecor)
     var decor = cityAttr.get("decor")
     switch(newDecor)
     {
-
+        case "park" :
+            decor.set({
+                "park" : decor.get("park") + 1
+            })
+                .then(function() {
+                   var newBalance = updateCash(-35000)
+                    console.log("New Park added");
+                   console.log("The updated balance is ", newBalance);
+                })
+                .catch(function(error) {
+                    console.error("Error adding a park ", error)
+                })
+            break;
+        case "monument" :
+            decor.set({
+                "monument" : decor.get("monument") + 1
+            })
+                .then(function() {
+                    var newBalance = updateCash(-45000);
+                    console.log("New monument added");
+                    console.log("The updated balance is ", newBalance);
+                })
+                .catch(function(error) {
+                    console.error("Error adding a Monument ", error);
+                })
+            break;
+        case "pool" :
+            decor.set({
+                "pool" : decor.get("pool") + 1;
+            })
+                .then(function() {
+                    var newBalance = updateCash(-65000);
+                    console.log("New Pool added");
+                    console.log("The updated balance is ", newBalance);
+                })
+                .catch(function(error) {
+                    console.log("Error adding a swimming pool");
+                })
+            break;
     }
 }
 
