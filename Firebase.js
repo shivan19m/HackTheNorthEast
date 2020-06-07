@@ -17,7 +17,8 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-var db;
+var db = firebase.firestore();
+
 function createUser(inGameUserName)
 {
     var userId = firebase.auth().currentUser.uid;
