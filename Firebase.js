@@ -52,6 +52,8 @@ function createUser(inGameUserName)
         })
 }
 
+export var db;
+
 function updateCash(newCashPoints)
 {
     var userId = firebase.auth().currentUser.uid;

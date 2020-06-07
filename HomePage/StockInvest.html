@@ -5,6 +5,7 @@
     <title>StockInvest</title>
     <script type="text/javascript">
         function invest(symbol, numShares) {
+            import {db} from 'Firebase.js';
             const alphaAdvantageAPI = "S3OWN1COX84V4TCI"; //API key
             var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey" + +alphaAdvantageAPI
             const request = new XMLHttpRequest()
