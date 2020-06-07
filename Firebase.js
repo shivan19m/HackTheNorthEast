@@ -1,9 +1,11 @@
+
+// jay1231.web.app;
 var firebase = require("firebase/app");
 require("firebase/auth");
 require("firebase/analytics");
 require("firebase/firestore");
 
-jay1231.web.app;
+// jay1231.web.app;
 
 var firebaseConfig = {
     apiKey: "AIzaSyCktGr6pX6KyzPaOtdfEZk9Cm2ANuNvcbM",
