@@ -18,8 +18,10 @@
             request.open("GET", url, true)
             request.onreadystatechange = (ev => {
                 var obj = JSON.parse(request.responseText) //changes output to an object
-                document.write("High price : " + obj.high)
                 appendData(obj);
+                document.write("Symbol : " + Symbol)
+                document.write("High price : " + obj.high)
+                document.write("Low price : " + obj.low)
                 console.log(request.responseText)
                 var multiplier = 1000; //could be changed depending on what makes most sense
                 var closeValue = obj["05. price"]
