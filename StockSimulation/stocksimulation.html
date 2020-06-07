@@ -21,35 +21,78 @@
         <span></span>
 
         <ul id="menu">
-            <a href="#"><li>Home</li></a>
-            <a href="#"><li>Simulation</li></a>
-            <a href="#"><li>Neighborhood</li></a>
+            <a href="../HomePage/homepage.html"><li>Home</li></a>
+            <a href="../StockSimulation/stocksimulation.html"><li>Simulation</li></a>
+            <a href="../Neighborhood/neighborhood.html"><li>Neighborhood</li></a>
         </ul>
     </div>
     <div class ="logo">
-        <img class="img2" src="Logo.png">
+        <a href="../HomePage/homepage.html">
+            <img class="img2" src="Logo.png">
+        </a>
     </div>
     <div class="profile-box">
-        <a href="SignInPage/signin.html">
+        <a href="../SignInPage/signin.html">
             <img class="img1" src="user.png">
         </a>
-        <span class="txt1"> Shivan Mukherjee <br> $2500 </span>
+        <span class="txt1"> Shivan Mukherjee <br>  </span>
     </div>
 </nav>
-
-<div class="container1">
-    <table>
-
-    </table>
-
-</div>
-
 <div class="container2" style="color:black">
-    <h1> User Portfolio</h1>
-    <h2> Current Portfolio Value: </h2>
-    <h2> Purchasing Power: </h2>
+    <h1> Tesla</h1>
+    <h2> Price: 182.41 </h2>
+    <h2> Quantity Owned: </h2>
+    <h2 id="txt1"> 0 </h2>
+    <h2 id="txt2"> 1 </h2>
+    <br>
+
+    <button class="btn1" id="buy1" onclick="buy1()"> Purchase </button>
+    <button class="btn1" id="sell1" onclick="sell1()" > Sell </button>
+    <br>
+    <img src="Stock%20Image%201.png" class="container3">
 
 </div>
+<div class="container2" style="color:black">
+    <h1> Murphy Oil</h1>
+    <h2> Price: 43.99 </h2>
+       <h2> Quantity Owned: 0</h2>
+    <button class="btn1"> Purchase </button>
+    <button class="btn1"> Sell </button>
+    <br>
+
+    <img src="Stock%20Image%202.png"class="container3">
+</div>
+<div class="container2" style="color:black">
+    <h1> Apple</h1>
+    <h2> Price: 43.99 </h2>
+    <h2> Quantity Owned: 0</h2>
+    <button class="btn1"> Purchase </button>
+    <button class="btn1"> Sell </button>
+    <br>
+
+    <img src="Stock%20Image%203.png"class="container3">
+
+</div>
+
+<script>
+    var x=document.getElementById("buy1");
+    var z=document.getElementById("sell1");
+
+    var y=document.getElementById("txt1");
+    var z=document.getElementById("txt2");
+
+    z.style.display="none";
+    function buy1()
+    {
+        y.style.display="none";
+        z.style.display="inline";
+    }
+    function sell1()
+    {
+        z.style.display="none";
+        y.style.display="inline";
+    }
+</script>
 
 </body>
 </html>
