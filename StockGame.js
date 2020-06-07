@@ -3,7 +3,7 @@
 function invest(symbol, numShares) {
     // import {db} from 'Firebase.js';
     const alphaAdvantageAPI = "S3OWN1COX84V4TCI"; //API key
-    var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey" + alphaAdvantageAPI
+    var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=" + alphaAdvantageAPI
     const request = new XMLHttpRequest()
     request.open("GET", url, true)
     request.send();
@@ -177,20 +177,19 @@ function sell (symbol, numShares) {
                 })
             break;
     }
-}
-    // fetch(url)
-    //     .then(function (response) {
-    //         console.log("response" +response.json())
-    //         return response.json();
-    //     })
-    //     .then(function (myJson) {
-    //         console.log(myJson.ip);
-    //     })
-    //     .catch(function (error) {
-    //         console.log("Error: " + error);
-    //     });
-    // WebRequest req = HttpWebRequest.Create(url);
-    // WebResponse webResponse = req.GetResponse();
+    fetch(url)
+        .then(function (response) {
+            console.log("response" +response.json())
+            return response.json();
+        })
+        .then(function (myJson) {
+            console.log(myJson.ip);
+        })
+        .catch(function (error) {
+            console.log("Error: " + error);
+        });
+    WebRequest req = HttpWebRequest.Create(url);
+    WebResponse webResponse = req.GetResponse();
 
 }
 
