@@ -1,10 +1,5 @@
 
 // jay1231.web.app;
-var firebase = require("firebase/app");
-require("firebase/auth");
-require("firebase/analytics");
-require("firebase/firestore");
-
 // jay1231.web.app;
 
 var firebaseConfig = {
@@ -16,6 +11,12 @@ var firebaseConfig = {
     messagingSenderId: "866756428884",
     appId: "1:866756428884:web:a721b4a466bd0572cb19c1"
 };
+
+var firebase = require("firebase/app");
+require("firebase/auth");
+require("firebase/analytics");
+require("firebase/firestore");
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
@@ -60,8 +61,6 @@ function createUser(inGameUserName)
             console.error("Error creating account: ", error);
         })
 }
-
-export var db;
 
 function updateCash(newCashPoints)
 {
