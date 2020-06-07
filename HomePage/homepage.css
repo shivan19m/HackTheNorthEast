@@ -4,15 +4,14 @@ body
 {
     margin: 0;
     padding: 0;
-    background: #232323;
+    background: white;
     color: #cdcdcd;
     font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
 #menuToggle
 {
-    display: block;
-    position: relative;
+    position: absolute;
     top: 50px;
     left: 50px;
     z-index: 1;
@@ -162,4 +161,11 @@ body
     margin-right: auto;
     max-height:25%;
     max-width:25%;
+}
+.Giant-Container
+{
+    height:1000%;
+    width:100%;
+    background: #232323;
+
 }
