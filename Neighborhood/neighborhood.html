@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fantasy Finances</title>
+    <link rel="stylesheet" href="neighborhood.css">
+</head>
+<body>
+
+<div class="menu-btn">
+    <div class="menu-btn__burger"></div>
+</div>
+
+<nav role="navigation">
+    <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <ul id="menu">
+            <a href="#"><li>Home</li></a>
+            <a href="#"><li>Simulation</li></a>
+            <a href="#"><li>Neighborhood</li></a>
+        </ul>
+    </div>
+    <div class ="logo">
+        <img class="img2" src="Logo.png">
+    </div>
+    <div class="profile-box">
+        <a href="SignInPage/signin.html">
+            <img class="img1" src="user.png">
+        </a>
+        <span class="txt1"> Shivan Mukherjee <br> $2500 </span>
+    </div>
+</nav>
+<div class="menu">
+    <div class="card">
+        <h1>House1</h1>
+        <p><button>Buy</button></p>
+    </div>
+    <div class="card">
+        <h1>House2</h1>
+        <p><button>Buy</button></p>
+    </div>
+    <div class="card">
+        <h1>Complex1</h1>
+        <p><button id="btn1" onclick="coolguy()">Buy</button></p>
+    </div>
+    <div class="card">
+        <h1>Tower1</h1>
+        <p><button id="btn2" onclick="coolguy()">Buy</button></p>
+    </div>
+    <div class="card">
+        <h1>GasStation1</h1>
+        <p><button id="btn3" onclick="coolguy()">Buy</button></p>
+    </div>
+    <div class="card">
+        <h1>Hotel1</h1>
+        <p><button id="btn4" onclick="coolguy()">Buy</button></p>
+    </div>
+</div>
+<img id="hello" src="HTNE.jpg">
+<img id = "hello1" src="HTNE (1).jpg">
+
+<script>
+var x=document.getElementById("btn1");
+var y=document.getElementById("hello");
+var z=document.getElementById("hello1");
+
+y.style.display="none";
+function coolguy()
+{
+    z.style.display="none";
+    y.style.display="inline";
+}
+</script>
+</body>
+
+</html>
