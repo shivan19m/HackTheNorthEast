@@ -7,9 +7,7 @@
 .loginFormCol{
     background: rgba(100, 170, 232, 0.4);
 }
-.loginFormRow {
-    height:300px;
-}
+
 .loginHeaderColumn:hover {
     transform: scale(1.05);
 }
@@ -40,12 +38,13 @@
     background: #7746ca ;
 }
 
+
 body
 {
     margin: 0;
     padding: 0;
     background: #232323;
-    color: black;
+    color: #cdcdcd;
     font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
@@ -142,7 +141,7 @@ body
 {
     position: absolute;
     width: 300px;
-    margin: -100px 0 0 -50px;
+    margin: -100px 0 0 -85px;
     padding: 50px;
     padding-top: 125px;
 
