@@ -41,11 +41,143 @@
 
 
             </div>
+        </nav>
 </div>
 
-</nav>
-            <h1>
-                Join now to experience your finances reimagined.
-            </h1>
+<div class="form-box">
+    <h1>
+        Join now to experience your finances reimagined.
+    </h1>
+    <div id="txt3">
+        <h2>
+            Click Next to find tips for good financial practices.
+        </h2>
+    </div>
+
+    <button class=btn1 id="btn1" onclick="next()">Next</button>
+</div>
+<div id="tips-cont1">
+    <div class="tips-cont">
+        <h2>This is a tip</h2>
+        <button class=btn1 id="btn2" onclick="next2()">Next</button>
+
+    </div>
+</div>
+<div  id="tips-cont2">
+    <div class="tips-cont">
+        <h2>This is a tip</h2>
+        <button class=btn1 id="btn3" onclick="next3()">Next</button>
+    </div></div>
+<div  id="tips-cont3">
+    <div class="tips-cont">
+        <h2>This is a tip</h2>
+        <button class=btn1 id="btn4" onclick="next4()">Next</button>
+
+    </div></div>
+<div  id="tips-cont4">
+    <div class="tips-cont">
+        <h2>This is a tip</h2>
+        <button class=btn1 id="btn5" onclick="next5()">Next</button>
+
+    </div></div>
+<div id="tips-cont5">
+    <div class="tips-cont">
+        <h2>This is a tip</h2>
+    </div></div>
+<div id="tips-cont6">
+    <div class="tips-cont">
+        <h2>This is a tip</h2>
+    </div></div>
+<div id="tips-cont7">
+    <div class="tips-cont">
+        <h2>This is a tip</h2>
+        <button class=btn1 id="btn6" onclick="next6()">Next</button>
+
+    </div></div>
+<div id="tips-cont8">
+    <div class="tips-cont">
+        <h2>This is a tip</h2>
+        <button class=btn1 id="btn7" onclick="next7()">Next</button>
+
+    </div>
+</div>
+<script>
+    var x=document.getElementById("btn1");
+    var y=document.getElementById("btn2");
+    var z=document.getElementById("btn3");
+    var a=document.getElementById("btn4");
+    var b=document.getElementById("btn5");
+    var c=document.getElementById("btn6");
+    var d=document.getElementById("btn7");
+
+    var f=document.getElementById("tips-cont1");
+    var g=document.getElementById("tips-cont2");
+    var h=document.getElementById("tips-cont3");
+    var i=document.getElementById("tips-cont4");
+    var j=document.getElementById("tips-cont5");
+    var k=document.getElementById("tips-cont6");
+    var l=document.getElementById("tips-cont7");
+    var m=document.getElementById("tips-cont8");
+
+
+    y.style.display="none";
+    z.style.display="none";
+    a.style.display="none";
+    b.style.display="none";
+    c.style.display="none";
+    d.style.display="none";
+
+    f.style.display="none";
+    g.style.display="none";
+    h.style.display="none";
+    i.style.display="none";
+    j.style.display="none";
+    k.style.display="none";
+    l.style.display="none";
+    m.style.display="none";
+
+
+    function next()
+    {
+        x.style.display="none";
+        y.style.display="inline";
+        f.style.display="inline";
+    }
+    function next2()
+    {
+        y.style.display="none";
+        z.style.display="inline";
+        g.style.display="inline";
+    }
+    function next3()
+    {
+        z.style.display="none";
+        a.style.display="inline";
+        h.style.display="inline";
+    }
+    function next4()
+    {
+        a.style.display="none";
+        b.style.display="inline";
+        i.style.display="inline";
+    }
+    function next5()
+    {
+        b.style.display="none";
+        c.style.display="inline";
+        j.style.display="inline";
+    }
+    function next6()
+    {
+        c.style.display="none";
+        d.style.display="inline";
+        k.style.display="inline";
+    }
+    function next7()
+    {
+        d.style.display="none";
+    }
+
+</script>
 </body>
 </html>
