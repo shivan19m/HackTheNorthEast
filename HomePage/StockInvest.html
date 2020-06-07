@@ -2,23 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>StockInvest</title>
+<title>StockInvest</title>-->
     <script type="text/javascript">
-        function invest(symbol, numShares) {
+        function invest(Stocksymbol, numShares, currentCash) {
             import {db} from 'Firebase.js';
             const alphaAdvantageAPI = "S3OWN1COX84V4TCI"; //API key
-            var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey" + +alphaAdvantageAPI
+            var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey" + alphaAdvantageAPI
             const request = new XMLHttpRequest()
             request.open("GET", url)
             request.send();
             request.onreadystatechange=(ev => console.log(request.responseText))
             var multiplier = 1000; //could be changed depending on what makes most sense
             var obj = JSON.parse(request.responseText) //changes output to an object
-            var closeValue = obj["03. high"]; //they did not have closing data in their global quote, so I just used the high for now
+            var closeValue = obj["05. price"]; //they did not have closing data in their global quote, so I just used the high for now
             var openValue = obj["02. open"]; //open value - not sure if this is the right call to get this data
-            if (openValue * numShares > )
+            db.collection("users").doc(userId).set({
+                symbol : Stocksymbol,
+
+            })
+            if (openValue * numShares > db.collection("users").doc(userId).get(cashPoints));
                 throw "Invalid amount invested";
             var amtGained = (closeValue - openValue)*numShares*multiplier;
+        }
+        var db;
+        function sell (symbol, numShares){
+            db.collection("users")
         }
     </script>
 </head>

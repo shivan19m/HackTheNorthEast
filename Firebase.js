@@ -41,6 +41,13 @@ function createUser(inGameUserName)
                 monument: 0,
                 pool: 0
             }
+        },
+        stocks: {
+            IBM: 0,
+            AAPL: 0,
+            GOOGL: 0,
+            FB: 0,
+            AMZN: 0,
         }
     })
         .then(function() {
@@ -210,6 +217,82 @@ function addEntertainmentPlace(newEntertainmentPlace)
                 })
                 .catch(function(error) {
                     console.log("Error adding a swimming pool");
+                })
+            break;
+    }
+}
+
+function udpateStockInventory(newStock, amountWanted)
+{
+    var userId = firebase.auth().currentUser.uid;
+    var userDoc = db.collection("users").doc(userId)
+    var stock = userDoc.get("stocks")
+    switch(newStock)
+    {
+        case "IBM":
+            stocks.set({
+                IBM : stocks.get("IBM") + amountWanted,
+            })
+                .then(function()
+                {
+                    var newBalance = updateCash(132.06*amountWanted*-1);
+                    console.log("Bought IBM Stock(s)");
+                    console.log("The updated balance is ", newBalance);
+                })
+                .catch(function(error){
+                    console.error("Error buying stocks ", error);
+                })
+            break;
+        case "AAPL":
+            stocks.set({
+                AAPL : building.get("AAPL") + amountWanted,
+            })
+                .then(function() {
+                    var newBalance = updateCash(331.5*amountWanted*-1);
+                    console.log("Bought AAPL stock(s)");
+                    console.log("The updated balance is ", newBalance);
+                })
+                .catch(function(error) {
+                    console.error("Error buying stocks ", error);
+                })
+            break;
+        case "GOOGL":
+            stocks.set({
+                stocks: building.get("stocks") + amountWanted,
+            })
+                .then(function() {
+                    var newBalance = updateCash(-1440.02*amountWanted)
+                    console.log("Bought GOOGL stock(s)");
+                    console.log("The updated balance is ", newBalance);
+                })
+                .catch(function(error) {
+                    console.error("Error buying stocks ", error);
+                })
+            break;
+        case "FB":
+            stocks.set({
+                Hotel: stocks.get("FB") + amountWanted,
+            })
+                .then(function() {
+                    var newBalance = updateCash(230.77*amountWanted*-1)
+                    console.log("Bought FB stock(s)");
+                    console.log("The updated balance is ", newBalance);
+                })
+                .catch(function(error) {
+                    console.error("Error buying stocks ", error);
+                })
+            break;
+        case "AMZN":
+            stocks.set({
+                Apartment: stocks.get("Apartment") + amountWanted,
+            })
+                .then(function() {
+                    var newBalance = updateCash(2483.00*amountWanted*-1)
+                    console.log("Bought AMZN stock(s)");
+                    console.log("The updated balance is ", newBalance);
+                })
+                .catch(function(error) {
+                    console.error("Error adding an apartment ", error);
                 })
             break;
     }
