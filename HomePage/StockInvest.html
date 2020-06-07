@@ -3,97 +3,103 @@
 <head>
     <meta charset="UTF-8">
 <title>StockInvest</title>-->
-    <script type="module">
-        import {db} from '../Firebase.js'
-    </script>
+
+<!--    <script type="module">-->
+<!--        import {db} from '../Firebase.js'-->
+<!--    </script>-->
     <script type="text/javascript">
        // import {db} from 'Firebase.js';
         function invest(symbol, numShares) {
             // import {db} from 'Firebase.js';
             const alphaAdvantageAPI = "S3OWN1COX84V4TCI"; //API key
-            var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey" + alphaAdvantageAPI
+            var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=" + alphaAdvantageAPI
             const request = new XMLHttpRequest()
+
             request.open("GET", url, true)
-            request.send();
-            request.onreadystatechange=(ev => console.log(request.responseText))
-            var multiplier = 1000; //could be changed depending on what makes most sense
-            var obj = JSON.parse(request.responseText) //changes output to an object
-            var closeValue = obj["05. price"];
-            var openValue = obj["02. open"]
-            var userId = firebase.auth().currentUser.uid;
-            var userDoc = db.collection("users").doc(userId)
-            var stock = userDoc.get("stocks")
-            switch(symbol) {
-                case "IBM":
-                    UserDoc.stocks.set({
-                        IBM: stocks.get("IBM") + amountWanted,
-                    })
-                        .then(function () {
-                            var newBalance = updateCash(openValue * amountWanted * -1);
-                            console.log("Bought IBM Stock(s)");
-                            console.log("The updated balance is ", newBalance);
+            request.onreadystatechange = (ev => {
+                var obj = JSON.parse(request.responseText) //changes output to an object
+                document.write("High price : " + obj.high)
+                appendData(obj);
+                console.log(request.responseText)
+                var multiplier = 1000; //could be changed depending on what makes most sense
+                var closeValue = obj["05. price"]
+                var openValue = obj.get["02. open"]
+                var userId = firebase.auth().currentUser.uid;
+                var userDoc = db.collection("users").doc(userId)
+                var stock = userDoc.get("stocks")
+                switch(symbol) {
+                    case "IBM":
+                        UserDoc.stocks.set({
+                            IBM: stocks.get("IBM") + amountWanted,
                         })
-                        .catch(function (error) {
-                            console.error("Error buying stocks ", error);
+                            .then(function () {
+                                var newBalance = updateCash(openValue * amountWanted * -1);
+                                console.log("Bought IBM Stock(s)");
+                                console.log("The updated balance is ", newBalance);
+                            })
+                            .catch(function (error) {
+                                console.error("Error buying stocks ", error);
+                            })
+                        break;
+                    case "AAPL":
+                        UserDoc.stocks.set({
+                            AAPL: building.get("AAPL") + amountWanted,
                         })
-                    break;
-                case "AAPL":
-                    UserDoc.stocks.set({
-                        AAPL: building.get("AAPL") + amountWanted,
-                    })
-                        .then(function () {
-                            var newBalance = updateCash(openValue* amountWanted * -1);
-                            console.log("Bought AAPL stock(s)");
-                            console.log("The updated balance is ", newBalance);
+                            .then(function () {
+                                var newBalance = updateCash(openValue* amountWanted * -1);
+                                console.log("Bought AAPL stock(s)");
+                                console.log("The updated balance is ", newBalance);
+                            })
+                            .catch(function (error) {
+                                console.error("Error buying stocks ", error);
+                            })
+                        break;
+                    case "GOOGL":
+                        UserDoc.stocks.set({
+                            GOOGL: building.get("stocks") + amountWanted,
                         })
-                        .catch(function (error) {
-                            console.error("Error buying stocks ", error);
+                            .then(function () {
+                                var newBalance = updateCash(openValue * amountWanted)
+                                console.log("Bought GOOGL stock(s)");
+                                console.log("The updated balance is ", newBalance);
+                            })
+                            .catch(function (error) {
+                                console.error("Error buying stocks ", error);
+                            })
+                        break;
+                    case "FB":
+                        UserDoc.stocks.set({
+                            FB: stocks.get("FB") + amountWanted,
                         })
-                    break;
-                case "GOOGL":
-                    UserDoc.stocks.set({
-                        GOOGL: building.get("stocks") + amountWanted,
-                    })
-                        .then(function () {
-                            var newBalance = updateCash(openValue * amountWanted)
-                            console.log("Bought GOOGL stock(s)");
-                            console.log("The updated balance is ", newBalance);
+                            .then(function () {
+                                var newBalance = updateCash(openValue * amountWanted * -1)
+                                console.log("Bought FB stock(s)");
+                                console.log("The updated balance is ", newBalance);
+                            })
+                            .catch(function (error) {
+                                console.error("Error buying stocks ", error);
+                            })
+                        break;
+                    case "AMZN":
+                        UserDoc.stocks.set({
+                            AMZN: stocks.get("AMZN") + amountWanted,
                         })
-                        .catch(function (error) {
-                            console.error("Error buying stocks ", error);
-                        })
-                    break;
-                case "FB":
-                    UserDoc.stocks.set({
-                        FB: stocks.get("FB") + amountWanted,
-                    })
-                        .then(function () {
-                            var newBalance = updateCash(openValue * amountWanted * -1)
-                            console.log("Bought FB stock(s)");
-                            console.log("The updated balance is ", newBalance);
-                        })
-                        .catch(function (error) {
-                            console.error("Error buying stocks ", error);
-                        })
-                    break;
-                case "AMZN":
-                    UserDoc.stocks.set({
-                        AMZN: stocks.get("AMZN") + amountWanted,
-                    })
-                        .then(function () {
-                            var newBalance = updateCash(openValue * amountWanted * -1)
-                            console.log("Bought AMZN stock(s)");
-                            console.log("The updated balance is ", newBalance);
-                        })
-                        .catch(function (error) {
-                            console.error("Error buying stocks ", error);
-                        })
-                    break;
+                            .then(function () {
+                                var newBalance = updateCash(openValue * amountWanted * -1)
+                                console.log("Bought AMZN stock(s)");
+                                console.log("The updated balance is ", newBalance);
+                            })
+                            .catch(function (error) {
+                                console.error("Error buying stocks ", error);
+                            })
+                        break;
                 }
                 if (openValue * numShares > db.collection("users").doc(userId).get(cashPoints));
-                    throw "Invalid amount invested";
+                throw "Invalid amount invested";
                 var amtGained = (closeValue - openValue)*numShares*multiplier;
                 console.log("You gained ", amtGained, " today");
+            })
+            request.send();
         }
         function sell (symbol, numShares) {
             const alphaAdvantageAPI = "S3OWN1COX84V4TCI"; //API key
@@ -189,8 +195,10 @@
     </script>
 </head>
 <body>
-
-<p><a href="#" onClick="invest('IBM', 100)">Top Text</a></p>
-
+    <div id = "myData"></div>
+    <p>This is the title</p>
+    <script>
+        invest('IBM',100);
+    </script>
 </body>
 </html>
