@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
 <title>StockInvest</title>-->
     <script type="module">
-        import {db} from 'Firebase.js';
+        import {db} from 'Firebase.js'
     </script>
     <script type="text/javascript">
-       // import {db} from 'Firebase.js';
+       import {db} from 'Firebase.js';
+       const alphaAdvantageAPI = "S3OWN1COX84V4TCI"; //API key
+       var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey" + alphaAdvantageAPI
+       const request = new XMLHttpRequest()
+       request.open("GET", url)
+       request.send();
+       request.onreadystatechange=(ev => console.log(request.responseText))
+       var multiplier = 1000; //could be changed depending on what makes most sense
+       var obj = JSON.parse(request.responseText) //changes output to an object
+       var closeValue = obj["05. price"];
+       var openValue = obj["02. open"]
         function invest(symbol, numShares) {
             // import {db} from 'Firebase.js';
-            const alphaAdvantageAPI = "S3OWN1COX84V4TCI"; //API key
-            var url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey" + alphaAdvantageAPI
-            const request = new XMLHttpRequest()
-            request.open("GET", url)
-            request.send();
-            request.onreadystatechange=(ev => console.log(request.responseText))
-            var multiplier = 1000; //could be changed depending on what makes most sense
-            var obj = JSON.parse(request.responseText) //changes output to an object
-            var closeValue = obj["05. price"];
-            var openValue = obj["02. open"]
             var userId = firebase.auth().currentUser.uid;
             var userDoc = db.collection("users").doc(userId)
             var stock = userDoc.get("stocks")
             switch(symbol) {
                 case "IBM":
-                    stocks.set({
+                    UserDoc.stocks.set({
                         IBM: stocks.get("IBM") + amountWanted,
                     })
                         .then(function () {
@@ -38,7 +38,7 @@
                         })
                     break;
                 case "AAPL":
-                    stocks.set({
+                    UserDoc.stocks.set({
                         AAPL: building.get("AAPL") + amountWanted,
                     })
                         .then(function () {
@@ -51,7 +51,7 @@
                         })
                     break;
                 case "GOOGL":
-                    stocks.set({
+                    UserDoc.stocks.set({
                         GOOGL: building.get("stocks") + amountWanted,
                     })
                         .then(function () {
@@ -64,7 +64,7 @@
                         })
                     break;
                 case "FB":
-                    stocks.set({
+                    UserDoc.stocks.set({
                         FB: stocks.get("FB") + amountWanted,
                     })
                         .then(function () {
@@ -77,7 +77,7 @@
                         })
                     break;
                 case "AMZN":
-                    stocks.set({
+                    UserDoc.stocks.set({
                         AMZN: stocks.get("AMZN") + amountWanted,
                     })
                         .then(function () {
@@ -95,10 +95,86 @@
                 var amtGained = (closeValue - openValue)*numShares*multiplier;
                 console.log("You gained ", amtGained, " today");
         }
-        var db;
-        function sell (symbol, numShares)
-        {
-            db.collection("users").set()
+        function sell (symbol, numShares) {
+            var userId = firebase.auth().currentUser.uid;
+            var userDoc = db.collection("users").doc(userId)
+            switch (symbol) {
+                case "IBM":
+                    if (numShares > stocks.get("IBM"))
+                        throw "Not enough stocks to sell";
+                    UserDoc.stocks.set({
+                        IBM: stocks.get("IBM") - numShares,
+                    })
+                        .then(function () {
+                            var newBalance = updateCash(closeValue * numShares);
+                            console.log("Sold IBM Stock(s)");
+                            console.log("The updated balance is ", newBalance);
+                        })
+                        .catch(function (error) {
+                            console.error("Error selling stocks ", error);
+                        })
+                    break;
+                case "AAPL":
+                    if (numShares > stocks.get("AAPL"))
+                        throw "Not enough stocks to sell";
+                    stocks.set({
+                        AAPL: building.get("AAPL") - numShares,
+                    })
+                        .then(function () {
+                            var newBalance = updateCash(closeValue * numShares);
+                            console.log("Sold AAPL stock(s)");
+                            console.log("The updated balance is ", newBalance);
+                        })
+                        .catch(function (error) {
+                            console.error("Error selling stocks ", error);
+                        })
+                    break;
+                case "GOOGL":
+                    if (numShares > stocks.get("GOOGL"))
+                        throw "Not enough stocks to sell";
+                    stocks.set({
+                        GOOGL: stocks.get("stocks") - numShares,
+                    })
+                        .then(function () {
+                            var newBalance = updateCash(closeValue * numShares)
+                            console.log("Sold GOOGL stock(s)");
+                            console.log("The updated balance is ", newBalance);
+                        })
+                        .catch(function (error) {
+                            console.error("Error selling stocks ", error);
+                        })
+                    break;
+                case "FB":
+                    if (numShares > stocks.get("FB"))
+                        throw "Not enough stocks to sell";
+                    UserDoc.stocks.set({
+                        FB: stocks.get("FB") + numShares,
+                    })
+                        .then(function () {
+                            var newBalance = updateCash(closeValue * numShares)
+                            console.log("Sold FB stock(s)");
+                            console.log("The updated balance is ", newBalance);
+                        })
+                        .catch(function (error) {
+                            console.error("Error selling stocks ", error);
+                        })
+                    break;
+                case "AMZN":
+                    if (numShares > stocks.get("AMZN"))
+                        throw "Not enough stocks to sell";
+                    UserDoc.stocks.set({
+                        AMZN: stocks.get("AMZN") + numShares,
+                    })
+                        .then(function () {
+                            var newBalance = updateCash(closeValue * numShares)
+                            console.log("Sold AMZN stock(s)");
+                            console.log("The updated balance is ", newBalance);
+                        })
+                        .catch(function (error) {
+                            console.error("Error selling stocks ", error);
+                        })
+                    break;
+            }
         }
     </script>
 </head>
